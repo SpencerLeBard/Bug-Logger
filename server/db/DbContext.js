@@ -9,6 +9,8 @@ class DbContext {
   Bugs = mongoose.model("Bug", BugSchema);
   Notes = mongoose.model("Note", NoteSchema);
   Profile = mongoose.model("Profile", ProfileSchema);
+
+
 }
 
 export const dbContext = new DbContext();
