@@ -14,6 +14,10 @@ class NoteService {
     }
     return data
   }
+  async getNotesByBugId(boardId, email) {
+    let data = await dbContext.Notes.find({ boardId: boardId, creatorEmail: email })
+    return data
+  }
 
   async create(rawData) {
     let data = await dbContext.Notes.create(rawData)

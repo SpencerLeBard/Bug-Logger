@@ -14,7 +14,6 @@ export class NoteController extends BaseController {
       .use(auth0provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getById)
-      .get('/:id/lists', this.getListsByBoardId)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -23,20 +22,12 @@ export class NoteController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      //only gets boards by user who is logged in
       let data = await noteService.getAll(req.userInfo.email)
       return res.send(data)
     }
     catch (err) { next(err) }
   }
 
-  async getListsByBoardId(req, res, next) {
-    try {
-      let data = await noteService.getListsByBoardId(req.params.id, req.userInfo.email)
-      return res.send(data)
-    }
-    catch (err) { next(err) }
-  }
 
   async getById(req, res, next) {
     try {

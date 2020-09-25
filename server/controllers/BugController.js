@@ -14,7 +14,7 @@ export class BugController extends BaseController {
       .use(auth0provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getById)
-      .get('/:id/lists', this.getListsByBoardId)
+      .get('/:id/notes', this.getNotesByBugId)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -23,16 +23,15 @@ export class BugController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      //only gets boards by user who is logged in
       let data = await bugService.getAll(req.userInfo.email)
       return res.send(data)
     }
     catch (err) { next(err) }
   }
 
-  async getListsByBoardId(req, res, next) {
+  async getNotesByBugId(req, res, next) {
     try {
-      let data = await bugService.getListsByBoardId(req.params.id, req.userInfo.email)
+      let data = await noteService.getNotesByBugId(req.params.id, req.userInfo.email)
       return res.send(data)
     }
     catch (err) { next(err) }
