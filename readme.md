@@ -89,19 +89,22 @@ Delete
 
 ## Requirements
 
-### Visualization
+### Saturday/Sunday
 
-X BugDetails displays the details of a bug and its Notes
-M Bugs can be filtered by their status
-X Creating a new bug automatically navigates to the BugDetails view
-M Styling Indication on main page that bug is closed (color, strike-through, etc.)
-X Bugs display last modified date
+1 Creating a new bug automatically navigates to the BugDetails view
+2 BugDetails displays the details of a bug and its Notes
 
-### Functionality
+### Monday
 
 M Bugs can be closed from the BugDetails view
+M Bugs can be filtered by their status
+M Styling Indication on main page that bug is closed (color, strike-through, etc.)
+
+### Easy Monday
 - User is prompted "are you sure?" when closing a Bug
-? Notes can be added and removed from a bug in the BugDetails view
-- User prompt to remove Note from Bug
-- A Bug can be edited
 - Cannot edit a Bug after it is closed
+- Bugs display last modified date
+
+
+
+

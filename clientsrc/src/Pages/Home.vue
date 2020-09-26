@@ -64,7 +64,7 @@ export default {
   methods: {
     addBug() {
       this.$store.dispatch("addBug", this.newBug);
-      this.newBoard = { title: "", description: "" };
+      this.newBug = { title: "", description: "" };
     },
   },
   components: {

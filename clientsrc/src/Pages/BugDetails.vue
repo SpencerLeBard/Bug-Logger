@@ -2,9 +2,51 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <h1>{{ bug.title }}</h1>
-        <h1>{{ bug.description }}</h1>
         <h1>{{ bug.updatedAt }}</h1>
+      </div>
+      <div class="col">
+        <h1 v-if="bug.title && !editToggle">{{ bug.title }}</h1>
+        <div class="btn-group dropright">
+          <i
+            class="fa fa-ellipsis-v btn big-button"
+            aria-hidden="true"
+            role="button"
+            data-toggle="dropdown"
+          ></i>
+          <div class="dropdown-menu ml-1 text-center">
+            <p class="btn" @click="editToggle = !editToggle">Edit Bug</p>
+          </div>
+        </div>
+        <h4 v-if="bug.description && !editToggle">{{ bug.description }}</h4>
+      </div>
+      <div id="editForm card">
+        <form class="form" @submit.prevent="editBug" v-if="editToggle">
+          <input
+            type="text"
+            class="form-control mb-2"
+            aria-describedby="helpId"
+            v-model="bugData.title"
+            placeholder=" New Bug Title..."
+          />
+          <input
+            type="text"
+            class="form-control"
+            aria-describedby="helpId"
+            v-model="bugData.description"
+            placeholder="New Bug Description..."
+          />
+          <button
+            type="submit"
+            class="btn btn-warning"
+            @click="editToggle = !editToggle"
+          >
+            <i
+              class="fa fa-arrow-circle-right big-icon"
+              @click="editBug"
+              aria-hidden="true"
+            ></i>
+          </button>
+        </form>
       </div>
     </div>
     <div class="row">
@@ -47,6 +89,7 @@ export default {
         content: "",
         bug: this.$route.params.bugId,
       },
+      editToggle: false,
     };
   },
   computed: {
@@ -63,6 +106,11 @@ export default {
   methods: {
     addNote() {
       this.$store.dispatch("addNote", this.newNote);
+    },
+    editBug() {
+      this.bugData.id = this.$route.params.bugId;
+      console.log(this.bugData);
+      this.$store.dispatch("editBug", this.bugData);
     },
   },
 };

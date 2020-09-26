@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import router from "../router";
 import { api } from "./AxiosService"
+import ns from "../Services/NotificationService"
 
 Vue.use(Vuex);
 
@@ -94,7 +95,6 @@ export default new Vuex.Store({
       try {
         // let res = await api.get('bugs/' + bugId + '/notes')
         let res = await api.get('/notes')
-        console.log(res);
         commit('setNotes', res.data)
       } catch (error) {
         console.error(error);
@@ -103,7 +103,6 @@ export default new Vuex.Store({
     async addNote({ commit, state }, noteData) {
       try {
         let res = await api.post('notes', noteData)
-        console.log(res);
         commit("createNote", [...state.notes, res.data])
       } catch (error) {
         console.error(error);
@@ -111,8 +110,18 @@ export default new Vuex.Store({
     },
     async deleteNote({ commit }, noteId) {
       try {
-        await api.delete('notes/' + noteId)
-        commit("removeNote", noteId)
+        if (await ns.confirmAction("Do you want to delete this list?", "You'll never get it back ...")) {
+          await api.delete('notes/' + noteId)
+          commit("removeNote", noteId)
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async editBug({ commit }, bugData) {
+      try {
+        let res = await api.put('bugs/' + bugData.id, bugData)
+        commit('setActiveBug', res.data)
       } catch (error) {
         console.error(error);
       }
