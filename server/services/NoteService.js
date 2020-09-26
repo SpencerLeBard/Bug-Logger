@@ -10,12 +10,12 @@ class NoteService {
   async getById(id, userEmail) {
     let data = await dbContext.Notes.findOne({ _id: id, creatorEmail: userEmail })
     if (!data) {
-      throw new BadRequest("Invalid ID or you do not own this board")
+      throw new BadRequest("Invalid ID or you do not own this thing")
     }
     return data
   }
-  async getNotesByBugId(boardId, email) {
-    let data = await dbContext.Notes.find({ boardId: boardId, creatorEmail: email })
+  async getNotesByBugId(bugId, email) {
+    let data = await dbContext.Notes.find({ bugId: bugId, creatorEmail: email })
     return data
   }
 
@@ -27,7 +27,7 @@ class NoteService {
   async edit(id, userEmail, update) {
     let data = await dbContext.Notes.findOneAndUpdate({ _id: id, creatorEmail: userEmail }, update, { new: true })
     if (!data) {
-      throw new BadRequest("Invalid ID or you do not own this board");
+      throw new BadRequest("Invalid ID or you do not own this thing");
     }
     return data;
   }
@@ -35,7 +35,7 @@ class NoteService {
   async delete(id, userEmail) {
     let data = await dbContext.Notes.findOneAndRemove({ _id: id, creatorEmail: userEmail });
     if (!data) {
-      throw new BadRequest("Invalid ID or you do not own this board");
+      throw new BadRequest("Invalid ID or you do not own this thing");
     }
   }
 

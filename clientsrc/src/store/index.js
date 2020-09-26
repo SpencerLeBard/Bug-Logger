@@ -9,11 +9,17 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    profile: {}
+    profile: {},
+    bugs: [],
+    activeBug: {},
+    notes: []
   },
   mutations: {
     setProfile(state, profile) {
       state.profile = profile;
+    },
+    setBugs(state, bugs) {
+      state.bugs = bugs
     }
   },
   actions: {
@@ -29,6 +35,24 @@ export default new Vuex.Store({
         commit("setProfile", res.data);
       } catch (error) {
         console.error(error);
+      }
+    },
+    async getBugs({ commit }) {
+      try {
+        let res = await api.get('bugs')
+        commit('setBugs', res.data)
+        console.log(res);
+      } catch (error) {
+
+      }
+    },
+    async addBug({ commit }, bugData) {
+      try {
+        let res = await api.post('bugs', bugData)
+        commit("create", res.data)
+        console.log(res);
+      } catch (error) {
+
       }
     }
   }

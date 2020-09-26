@@ -10,9 +10,17 @@ class BugService {
   async getById(id, userEmail) {
     let data = await dbContext.Bugs.findOne({ _id: id, creatorEmail: userEmail })
     if (!data) {
-      throw new BadRequest("Invalid ID or you do not own this board")
+      throw new BadRequest("Invalid ID or you do not own this thing")
     }
     return data
+  }
+  async getNotesByBugId(req, res, next) {
+    try {
+      let data = await bugService.getNotesByBugId(req.params.id, req.userInfo.email)
+      return res.send(data)
+    } catch (error) {
+      next(error)
+    }
   }
 
   async create(rawData) {
@@ -23,7 +31,7 @@ class BugService {
   async edit(id, userEmail, update) {
     let data = await dbContext.Bugs.findOneAndUpdate({ _id: id, creatorEmail: userEmail }, update, { new: true })
     if (!data) {
-      throw new BadRequest("Invalid ID or you do not own this board");
+      throw new BadRequest("Invalid ID or you do not own this thing");
     }
     return data;
   }
@@ -31,7 +39,7 @@ class BugService {
   async delete(id, userEmail) {
     let data = await dbContext.Bugs.findOneAndRemove({ _id: id, creatorEmail: userEmail });
     if (!data) {
-      throw new BadRequest("Invalid ID or you do not own this board");
+      throw new BadRequest("Invalid ID or you do not own this thing");
     }
   }
 
