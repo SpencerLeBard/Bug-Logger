@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <router-link class="navbar-brand" :to="{ name: 'Home' }"
-      >BugSmasher</router-link
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark text-light">
+    <router-link class="navbar-brand text-light" :to="{ name: 'Home' }"
+      >BugSmasher 2.0</router-link
     >
     <button
       class="navbar-toggler"
@@ -16,17 +16,20 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item" :class="{ active: $route.name == 'Home' }">
-          <router-link :to="{ name: 'Home' }" class="nav-link"
+        <li
+          class="nav-item text-light"
+          :class="{ active: $route.name == 'Home' }"
+        >
+          <router-link :to="{ name: 'Home' }" class="nav-link text-light"
             >Bugs Home</router-link
           >
         </li>
         <li
-          class="nav-item"
+          class="nav-item text-light"
           v-if="$auth.isAuthenticated"
           :class="{ active: $route.name == 'Profile' }"
         >
-          <router-link class="nav-link" :to="{ name: 'Profile' }"
+          <router-link class="nav-link text-light" :to="{ name: 'Profile' }"
             >Profile</router-link
           >
         </li>

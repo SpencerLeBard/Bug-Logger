@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      {{ noteProp.content }}
-      <button @click="deleteNote">delete note</button>
+      <h5>{{ noteProp.content }}</h5>
+      <button class="btn btn-danger" @click="deleteNote">delete note</button>
     </div>
   </div>
 </template>
