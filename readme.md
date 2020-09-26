@@ -97,7 +97,6 @@ Delete
 ### Monday
 
 M Bugs can be closed from the BugDetails view
-M Bugs can be filtered by their status
 M Styling Indication on main page that bug is closed (color, strike-through, etc.)
 
 ### Easy Monday
@@ -105,6 +104,7 @@ M Styling Indication on main page that bug is closed (color, strike-through, etc
 - Cannot edit a Bug after it is closed
 - Bugs display last modified date
 
-
+### L's
+X Bugs can be filtered by their status
 
 

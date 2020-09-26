@@ -6,7 +6,7 @@
           class="col card d-flex justify-content-center text-center bg-dark text-light"
         >
           <form @submit.prevent="addBug">
-            Create Bug Here!
+            Report Bug Here!
             <input
               class="form-control create-bug-title"
               type="text"
@@ -33,13 +33,18 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-12 card" v-for="bug in bugs" :key="bug.id">
+        <div class="col-12 card list-o-bugs" v-for="bug in bugs" :key="bug.id">
           <div class="list-group-item">
             <router-link
-              class="list-group"
+              class="list-group d-flex text-center"
               :to="{ name: 'BugDetails', params: { bugId: bug.id } }"
-              >{{ bug.title }}</router-link
             >
+              Bug: {{ bug.title }}
+            </router-link>
+            <div class="text-center">
+              ||| Created By: {{ bug.creatorEmail }} ||| Created:
+              {{ bug.createdAt }} ||| Bug Squashed: {{ bug.closed }}
+            </div>
           </div>
         </div>
       </div>
@@ -84,5 +89,8 @@ export default {
 }
 .create-bug-desc {
   width: 10vw;
+} */
+/* .list-o-bugs {
+  width: 50vw;
 } */
 </style>
