@@ -24,11 +24,20 @@ export default new Vuex.Store({
     createBug(state, bug) {
       state.bugs.push(bug)
     },
-    removeBug(state, id) {
-      state.bugs = state.bugs.filter(b => b.id != id)
-    },
+    // removeBug(state, id) {
+    //   state.bugs = state.bugs.filter(b => b.id != id)
+    // },
     setActiveBug(state, bug) {
       state.activeBug = bug
+    },
+    setNotes(state, notes) {
+      state.notes = notes
+    },
+    createNote(state, note) {
+      state.notes = note
+    },
+    removeNote(state, note) {
+      state.notes = state.notes.filter(n => n.id != note)
     }
   },
   actions: {
@@ -58,7 +67,7 @@ export default new Vuex.Store({
       try {
         let res = await api.post('bugs', bugData)
         commit("createBug", res.data)
-        console.log(res);
+        // router.push({ name: "bugs/:id" })
       } catch (error) {
 
       }
@@ -76,7 +85,34 @@ export default new Vuex.Store({
         let res = await api.get('bugs/' + bugId)
         commit('setActiveBug', res.data)
         // @ts-ignore
-        // this.dispatch("getLists", bugId);
+        this.dispatch("getNotes", bugId);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async getNotes({ commit }, bugId) {
+      try {
+        // let res = await api.get('bugs/' + bugId + '/notes')
+        let res = await api.get('/notes')
+        console.log(res);
+        commit('setNotes', res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async addNote({ commit, state }, noteData) {
+      try {
+        let res = await api.post('notes', noteData)
+        console.log(res);
+        commit("createNote", [...state.notes, res.data])
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async deleteNote({ commit }, noteId) {
+      try {
+        await api.delete('notes/' + noteId)
+        commit("removeNote", noteId)
       } catch (error) {
         console.error(error);
       }
