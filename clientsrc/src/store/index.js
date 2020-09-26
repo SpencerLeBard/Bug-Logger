@@ -20,6 +20,15 @@ export default new Vuex.Store({
     },
     setBugs(state, bugs) {
       state.bugs = bugs
+    },
+    createBug(state, bug) {
+      state.bugs.push(bug)
+    },
+    removeBug(state, id) {
+      state.bugs = state.bugs.filter(b => b.id != id)
+    },
+    setActiveBug(state, bug) {
+      state.activeBug = bug
     }
   },
   actions: {
@@ -41,7 +50,6 @@ export default new Vuex.Store({
       try {
         let res = await api.get('bugs')
         commit('setBugs', res.data)
-        console.log(res);
       } catch (error) {
 
       }
@@ -49,11 +57,29 @@ export default new Vuex.Store({
     async addBug({ commit }, bugData) {
       try {
         let res = await api.post('bugs', bugData)
-        commit("create", res.data)
+        commit("createBug", res.data)
         console.log(res);
       } catch (error) {
 
       }
-    }
+    },
+    async deleteBug({ commit }, bugId) {
+      try {
+        await api.delete('bugs/' + bugId)
+        commit("removeBug", bugId)
+      } catch (error) {
+
+      }
+    },
+    async getActiveBug({ commit }, bugId) {
+      try {
+        let res = await api.get('bugs/' + bugId)
+        commit('setActiveBug', res.data)
+        // @ts-ignore
+        // this.dispatch("getLists", bugId);
+      } catch (error) {
+        console.error(error);
+      }
+    },
   }
 });
