@@ -92,12 +92,11 @@ Delete
 ### Saturday/Sunday
 
 1 Creating a new bug automatically navigates to the BugDetails view
-2 BugDetails displays the details of a bug and its Notes
+2 BugDetails displays the details of a bug and its Notes /// NOTE GET NOTE BY BUGID IN SERVER
 
 ### Monday
 
 M Bugs can be closed from the BugDetails view
-M Styling Indication on main page that bug is closed (color, strike-through, etc.)
 
 ### Easy Monday
 - User is prompted "are you sure?" when closing a Bug
@@ -106,5 +105,7 @@ M Styling Indication on main page that bug is closed (color, strike-through, etc
 
 ### L's
 X Bugs can be filtered by their status
+X Styling Indication on main page that bug is closed (color, strike-through, etc.)
+
 
 

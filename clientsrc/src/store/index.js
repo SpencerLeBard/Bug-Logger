@@ -68,11 +68,16 @@ export default new Vuex.Store({
       try {
         let res = await api.post('bugs', bugData)
         commit("createBug", res.data)
-        // router.push({ path: "/bugs/" + res.data.id })
+        router.push({ path: "bugs/" + res.data.id })
+        // router.push({ name: 'BugDetails', params: { id: res.data.id } })
+        this.dispatch("setActiveBug", res.data.id);
+        this.dispatch("getNotes", bugData);
+
       } catch (error) {
 
       }
     },
+
     async deleteBug({ commit }, bugId) {
       try {
         await api.delete('bugs/' + bugId)

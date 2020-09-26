@@ -93,6 +93,7 @@ export default {
   props: ["bugId"],
   mounted() {
     this.$store.dispatch("getActiveBug", this.$route.params.bugId);
+    this.$store.dispatch("getNotes", this.$route.params.bugId);
   },
   data() {
     return {
