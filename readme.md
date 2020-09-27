@@ -95,10 +95,10 @@ Delete
 
 ### Monday
 
-M Bugs can be closed from the BugDetails view
+- Bugs can be closed from the BugDetails view
 
 ### Easy Monday
-* User is prompted "are you sure?" when closing a Bug ///// SweetAlerts setup and ready
+* User is prompted "are you sure?" when closing a Bug ///// NOTE SweetAlerts setup and ready
 - Cannot edit a Bug after it is closed 
 * Bugs display last modified date //NOTE change to normal date/time
 

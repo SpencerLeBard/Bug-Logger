@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-3">
-        <h1>Last Updated At: {{ bug.updatedAt }}</h1>
+        <h3>Last Updated At: {{ bug.updatedAt }}</h3>
       </div>
       <div class="col">
         <h1 v-if="bug.title && !editToggle">Bug Name: {{ bug.title }}</h1>
@@ -16,10 +16,10 @@
           <div class="dropdown-menu ml-1 text-center">
             <p class="btn" @click="editToggle = !editToggle">Edit Bug</p>
           </div>
+          <h4 v-if="bug.description && !editToggle">
+            Bug Description: {{ bug.description }}
+          </h4>
         </div>
-        <h4 v-if="bug.description && !editToggle">
-          Bug Description: {{ bug.description }}
-        </h4>
       </div>
     </div>
     <div class="row">
@@ -74,9 +74,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-3 card d-flex justify-content-center">
-        <h1>Notes:</h1>
+      <div class="col-11 card notes-card d-flex m-1 p-5 bg-dark">
+        <div><h1 class="card col-2 text-center">Notes:</h1></div>
         <notes-component
+          class="card col-2"
           v-for="note in notes"
           :key="note.id"
           :noteProp="note"
@@ -102,9 +103,9 @@ export default {
         title: "",
         description: "",
       },
-      noteData: {
-        contents: "",
-        bug: "",
+      Data: {
+        title: "",
+        description: "",
       },
       newNote: {
         content: "",
@@ -138,4 +139,7 @@ export default {
 </script>
 
 <style>
+.notes-card {
+  height: 72vh;
+}
 </style>

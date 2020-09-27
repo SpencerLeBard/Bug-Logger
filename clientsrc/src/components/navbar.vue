@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark text-light">
-    <router-link class="navbar-brand text-light" :to="{ name: 'Home' }"
+  <nav class="navbar navbar-expand-lg navbar-light bg-success">
+    <router-link class="navbar-brand text-dark" :to="{ name: 'Home' }"
       >BugSmasher 2.0</router-link
     >
     <button
@@ -20,7 +20,7 @@
           class="nav-item text-light"
           :class="{ active: $route.name == 'Home' }"
         >
-          <router-link :to="{ name: 'Home' }" class="nav-link text-light"
+          <router-link :to="{ name: 'Home' }" class="nav-link text-dark"
             >Bugs Home</router-link
           >
         </li>
@@ -29,7 +29,7 @@
           v-if="$auth.isAuthenticated"
           :class="{ active: $route.name == 'Profile' }"
         >
-          <router-link class="nav-link text-light" :to="{ name: 'Profile' }"
+          <router-link class="nav-link text-dark" :to="{ name: 'Profile' }"
             >Profile</router-link
           >
         </li>

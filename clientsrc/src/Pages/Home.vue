@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-12 card list-o-bugs" v-for="bug in bugs" :key="bug.id">
+        <div class="col-12 card list-boards" v-for="bug in bugs" :key="bug.id">
           <div class="list-group-item">
             <router-link
               class="list-group d-flex text-center"
@@ -84,13 +84,12 @@ export default {
 };
 </script>
 <style scoped>
-/* .create-bug-title {
-  width: 10vw;
+.list-boards:hover {
+  transform: scale(1.07);
+  transition: 0.15s ease;
+  background-color: black;
 }
-.create-bug-desc {
-  width: 10vw;
-} */
-/* .list-o-bugs {
-  width: 50vw;
-} */
+.list-boards {
+  width: 25vw;
+}
 </style>
