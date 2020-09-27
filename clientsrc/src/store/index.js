@@ -80,8 +80,9 @@ export default new Vuex.Store({
 
     async deleteBug({ commit }, bugId) {
       try {
-        await api.delete('bugs/' + bugId)
-        commit("removeBug", bugId)
+        if (await ns.confirmAction("Do you want to delete this list?", "You'll never get it back ...")) {
+          await api.delete('bugs/' + bugId)
+        } commit("removeBug", bugId)
       } catch (error) {
 
       }
@@ -98,8 +99,8 @@ export default new Vuex.Store({
     },
     async getNotes({ commit }, bugId) {
       try {
-        // let res = await api.get('bugs/' + bugId + '/notes')
-        let res = await api.get('/notes')
+        let res = await api.get('bugs/' + bugId + '/notes')
+        // let res = await api.get('notes/')
         commit('setNotes', res.data)
       } catch (error) {
         console.error(error);
@@ -109,6 +110,7 @@ export default new Vuex.Store({
       try {
         let res = await api.post('notes', noteData)
         commit("createNote", [...state.notes, res.data])
+        console.log(res.data);
       } catch (error) {
         console.error(error);
       }

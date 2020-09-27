@@ -98,9 +98,9 @@ Delete
 M Bugs can be closed from the BugDetails view
 
 ### Easy Monday
-- User is prompted "are you sure?" when closing a Bug
-- Cannot edit a Bug after it is closed // SweetAlerts setup and ready
-- Bugs display last modified date //NOTE change to normal date/time
+* User is prompted "are you sure?" when closing a Bug ///// SweetAlerts setup and ready
+- Cannot edit a Bug after it is closed 
+* Bugs display last modified date //NOTE change to normal date/time
 
 ### L's
 X Bugs can be filtered by their status
