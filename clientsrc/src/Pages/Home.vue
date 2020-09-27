@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="container-fluid">
-      <div class="row">
+      <div class="row forest">
         <div
           class="col-12 card d-flex justify-content-center text-center bg-dark text-light"
         >
@@ -77,6 +77,9 @@ export default {
       this.$store.dispatch("addBug", this.newBug);
       this.newBug = { title: "", description: "" };
     },
+    deleteBoard() {
+      this.$store.dispatch("closeBoard", this.board.id);
+    },
   },
   components: {
     BugDetails,
@@ -91,5 +94,9 @@ export default {
 }
 .list-boards {
   width: 25vw;
+}
+
+.forest-img {
+  background: url(https://images.unsplash.com/photo-1577209299418-485f60c0d4de?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1263&q=80);
 }
 </style>

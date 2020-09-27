@@ -25,9 +25,10 @@ export default new Vuex.Store({
     createBug(state, bug) {
       state.bugs.push(bug)
     },
-    // removeBug(state, id) {
-    //   state.bugs = state.bugs.filter(b => b.id != id)
-    // },
+    closeBug(state, id) {
+      // state.bugs = state.bugs.filter(b => b.id != id)
+      state.bugs = state.bugs
+    },
     setActiveBug(state, bug) {
       state.activeBug = bug
     },
@@ -78,11 +79,11 @@ export default new Vuex.Store({
       }
     },
 
-    async deleteBug({ commit }, bugId) {
+    async closeBug({ commit }, bugId) {
       try {
-        if (await ns.confirmAction("Do you want to delete this list?", "You'll never get it back ...")) {
+        if (await ns.confirmAction("Do you want to close this bug?", "It'll be squashed forever ...")) {
           await api.delete('bugs/' + bugId)
-        } commit("removeBug", bugId)
+        } commit("closeBug", bugId)
       } catch (error) {
 
       }
@@ -127,6 +128,7 @@ export default new Vuex.Store({
     },
     async editBug({ commit }, bugData) {
       try {
+        // NOTE if(cannot edit if closed)
         let res = await api.put('bugs/' + bugData.id, bugData)
         commit('setActiveBug', res.data)
       } catch (error) {
