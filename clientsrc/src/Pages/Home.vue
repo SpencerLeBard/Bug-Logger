@@ -77,9 +77,6 @@ export default {
       this.$store.dispatch("addBug", this.newBug);
       this.newBug = { title: "", description: "" };
     },
-    deleteBoard() {
-      this.$store.dispatch("closeBoard", this.board.id);
-    },
   },
   components: {
     BugDetails,

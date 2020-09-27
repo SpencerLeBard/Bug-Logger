@@ -15,6 +15,7 @@
           ></i>
           <div class="dropdown-menu ml-1 text-center">
             <p class="btn" @click="editToggle = !editToggle">Edit Bug</p>
+            <p class="btn" @click="closeBug">Close Bug</p>
           </div>
           <h4 v-if="bug.description && !editToggle">
             Bug Description: {{ bug.description }}
@@ -133,6 +134,9 @@ export default {
       this.bugData.id = this.$route.params.bugId;
       console.log(this.bugData);
       this.$store.dispatch("editBug", this.bugData);
+    },
+    closeBug() {
+      this.$store.dispatch("closeBug", this.bug.id);
     },
   },
 };

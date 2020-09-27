@@ -13,6 +13,7 @@ export default new Vuex.Store({
     profile: {},
     bugs: [],
     activeBug: {},
+    //open closed bugs?
     notes: []
   },
   mutations: {
@@ -25,9 +26,8 @@ export default new Vuex.Store({
     createBug(state, bug) {
       state.bugs.push(bug)
     },
-    closeBug(state, id) {
-      // state.bugs = state.bugs.filter(b => b.id != id)
-      state.bugs = state.bugs
+    closeBug(state, bug) {
+      state.bugs = bug
     },
     setActiveBug(state, bug) {
       state.activeBug = bug
@@ -84,6 +84,7 @@ export default new Vuex.Store({
         if (await ns.confirmAction("Do you want to close this bug?", "It'll be squashed forever ...")) {
           await api.delete('bugs/' + bugId)
         } commit("closeBug", bugId)
+        commit("setActiveBug", bugId)
       } catch (error) {
 
       }

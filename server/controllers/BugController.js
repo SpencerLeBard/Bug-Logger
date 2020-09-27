@@ -62,7 +62,7 @@ export class BugController extends BaseController {
   async closeBug(req, res, next) {
     try {
       await bugService.closeBug(req.params.id, req.userInfo.email)
-      return res.send('Successfully closed your bug my dude')
+      return res.send('Bug Squashed')
     } catch (error) {
       next(error)
     }
