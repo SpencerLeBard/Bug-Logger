@@ -2,7 +2,9 @@
   <div>
     <div>
       <h5>{{ noteProp.content }}</h5>
-      <button class="btn btn-danger" @click="deleteNote">delete note</button>
+      <button class="btn btn-sm btn-danger" @click="deleteNote">
+        delete note
+      </button>
     </div>
   </div>
 </template>

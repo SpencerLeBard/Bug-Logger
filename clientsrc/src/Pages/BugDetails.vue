@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="row bg-success">
+    <div class="row bg-success border-top border-dark">
       <div class="col-3">
         <h3>Last Updated On: {{ bug.updatedAt | formatDate }}</h3>
       </div>
@@ -77,10 +77,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-11 card notes-card d-flex m-1 p-5 bg-dark">
+      <div class="col-11 card notes-card d-flex m-1 p-5 bg-light">
         <div><h1 class="card col-2 text-center">Notes:</h1></div>
         <notes-component
-          class="card col-2 m-2"
+          class="card col-2 m-2 note-cards"
           v-for="note in notes"
           :key="note.id"
           :noteProp="note"
@@ -147,5 +147,10 @@ export default {
 <style>
 .notes-card {
   height: 72vh;
+}
+.note-cards:hover {
+  transform: scale(1.15);
+  transition: 0.25s ease;
+  background-color: rgba(240, 240, 240, 0.925);
 }
 </style>
