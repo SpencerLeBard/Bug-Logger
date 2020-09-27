@@ -91,8 +91,7 @@ Delete
 
 ### Saturday/Sunday
 
-1 Creating a new bug automatically navigates to the BugDetails view
-2 BugDetails displays the details of a bug and its Notes /// NOTE GET NOTE BY BUGID IN SERVER
+1 BugDetails displays the details of a bug and its Notes /// NOTE GET NOTE BY BUGID IN SERVER
 
 ### Monday
 
@@ -100,8 +99,8 @@ M Bugs can be closed from the BugDetails view
 
 ### Easy Monday
 - User is prompted "are you sure?" when closing a Bug
-- Cannot edit a Bug after it is closed
-- Bugs display last modified date
+- Cannot edit a Bug after it is closed // SweetAlerts setup and ready
+- Bugs display last modified date //NOTE change to normal date/time
 
 ### L's
 X Bugs can be filtered by their status

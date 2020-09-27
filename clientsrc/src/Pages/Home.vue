@@ -6,7 +6,7 @@
           class="col card d-flex justify-content-center text-center bg-dark text-light"
         >
           <form @submit.prevent="addBug">
-            Report Bug Here!
+            Report Bugs Here!
             <input
               class="form-control create-bug-title"
               type="text"
