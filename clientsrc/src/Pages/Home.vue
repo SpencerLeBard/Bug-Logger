@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row">
         <div
-          class="col card d-flex justify-content-center text-center bg-dark text-light"
+          class="col-12 card d-flex justify-content-center text-center bg-dark text-light"
         >
           <form @submit.prevent="addBug">
             Report Bugs Here!
