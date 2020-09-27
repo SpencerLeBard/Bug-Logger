@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="container-fluid">
-      <div class="row forest">
+      <div class="row">
         <div
           class="col-12 card d-flex justify-content-center text-center bg-dark text-light"
         >
@@ -32,7 +32,7 @@
           </form>
         </div>
       </div>
-      <div class="row">
+      <div class="row forest-img">
         <div class="col-12 card list-boards" v-for="bug in bugs" :key="bug.id">
           <div class="list-group-item">
             <router-link
@@ -43,7 +43,8 @@
             </router-link>
             <div class="text-center">
               ||| Created By: {{ bug.creatorEmail }} ||| Created:
-              {{ bug.createdAt }} ||| Bug Squashed: {{ bug.closed }}
+              {{ bug.createdAt | formatDate }} ||| Bug Squashed:
+              {{ bug.closed }}
             </div>
           </div>
         </div>
@@ -95,5 +96,7 @@ export default {
 
 .forest-img {
   background: url(https://images.unsplash.com/photo-1577209299418-485f60c0d4de?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1263&q=80);
+  /* height: 92vh;
+  background-size: cover; */
 }
 </style>

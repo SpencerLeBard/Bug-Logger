@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
+    <div class="row bg-success">
       <div class="col-3">
-        <h3>Last Updated At: {{ bug.updatedAt }}</h3>
+        <h3>Last Updated On: {{ bug.updatedAt | formatDate }}</h3>
       </div>
       <div class="col">
         <h1 v-if="bug.title && !editToggle">Bug Name: {{ bug.title }}</h1>
@@ -18,7 +18,9 @@
             <p class="btn" @click="closeBug">Close Bug</p>
           </div>
           <h4 v-if="bug.description && !editToggle">
-            Bug Description: {{ bug.description }}
+            Bug Description: {{ bug.description }} <br />
+            Bug Squashed Status:
+            {{ bug.closed }}
           </h4>
         </div>
       </div>
@@ -78,7 +80,7 @@
       <div class="col-11 card notes-card d-flex m-1 p-5 bg-dark">
         <div><h1 class="card col-2 text-center">Notes:</h1></div>
         <notes-component
-          class="card col-2"
+          class="card col-2 m-2"
           v-for="note in notes"
           :key="note.id"
           :noteProp="note"

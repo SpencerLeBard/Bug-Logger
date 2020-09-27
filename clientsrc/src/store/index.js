@@ -85,6 +85,7 @@ export default new Vuex.Store({
           await api.delete('bugs/' + bugId)
         } commit("closeBug", bugId)
         commit("setActiveBug", bugId)
+        router.push({ name: "Home" })
       } catch (error) {
 
       }
@@ -101,8 +102,8 @@ export default new Vuex.Store({
     },
     async getNotes({ commit }, bugId) {
       try {
-        let res = await api.get('bugs/' + bugId + '/notes')
-        // let res = await api.get('notes/')
+        // let res = await api.get('bugs/' + bugId + '/notes')
+        let res = await api.get('notes/')
         commit('setNotes', res.data)
       } catch (error) {
         console.error(error);

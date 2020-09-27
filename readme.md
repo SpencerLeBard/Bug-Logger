@@ -91,7 +91,7 @@ Delete
 
 ### Saturday/Sunday
 
-1 BugDetails displays the details of a bug and its Notes /// NOTE GET NOTE BY BUGID IN SERVER
+1 BugDetails displays the details of a bug and its Notes 
 
 ### Monday
 
@@ -99,10 +99,9 @@ Delete
 
 ### Easy Monday
 * User is prompted "are you sure?" when closing a Bug ///// NOTE SweetAlerts setup and ready
-- Cannot edit a Bug after it is closed //NOTE if statment made and ready
-* Bugs display last modified date //NOTE change to normal date/time
+* Cannot edit a Bug after it is closed //NOTE if statment made and ready
 
-### L's
+###
 X Bugs can be filtered by their status ||| 
 X Styling Indication on main page that bug is closed (color, strike-through, etc.)
 

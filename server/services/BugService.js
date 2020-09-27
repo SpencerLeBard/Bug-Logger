@@ -14,6 +14,15 @@ class BugService {
     }
     return data
   }
+  async closeBug(id, userEmail) {
+    let bugData = await dbContext.Bugs.findOne({ _id: id, creatorEmail: userEmail })
+    // @ts-ignore
+    bugData.closed = true;
+
+    await dbContext.Bugs.findOneAndUpdate({ _id: id, creatorEmail: userEmail }, bugData, { new: true })
+
+    return bugData;
+  }
   async getNotesByBugId(req, res, next) {
     try {
       let data = await bugService.getNotesByBugId(req.params.id, req.userInfo.email)
@@ -36,15 +45,6 @@ class BugService {
     return data;
   }
 
-  async closeBug(id, userEmail) {
-    let bugData = await dbContext.Bugs.findOne({ _id: id, creatorEmail: userEmail })
-    // @ts-ignore
-    bugData.closed = true;
-
-    await dbContext.Bugs.findOneAndUpdate({ _id: id, creatorEmail: userEmail }, bugData, { new: true })
-
-    return bugData;
-  }
 
 }
 
