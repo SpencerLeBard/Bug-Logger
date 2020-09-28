@@ -78,10 +78,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-11 card notes-card d-flex m-1 p-5 bg-light">
-        <div><h1 class="card col-2 text-center">Notes:</h1></div>
+      <div class="col card notes-card d-flex m-1 p-5 bg-light">
+        <div><h1 class="card col-3 text-center">Notes:</h1></div>
         <notes-component
-          class="card col-2 m-2 note-cards"
+          class="card col-3 m-2 note-cards"
           v-for="note in notes"
           :key="note.id"
           :noteProp="note"
@@ -98,8 +98,6 @@ export default {
   props: ["bugId"],
   mounted() {
     this.$store.dispatch("getActiveBug", this.$route.params.bugId);
-    // debugger;
-    this.$store.dispatch("getNotes", this.bugId);
   },
   data() {
     return {
@@ -132,6 +130,7 @@ export default {
   methods: {
     addNote() {
       this.$store.dispatch("addNote", this.newNote);
+      console.log(this.newNote);
     },
     editBug() {
       this.bugData.id = this.$route.params.bugId;
@@ -146,10 +145,10 @@ export default {
 
 <style>
 .notes-card {
-  height: 72vh;
+  height: 70vh;
 }
 .note-cards:hover {
-  transform: scale(1.15);
-  transition: 0.25s ease;
+  transform: scale(1.1);
+  transition: 0.2s ease;
 }
 </style>

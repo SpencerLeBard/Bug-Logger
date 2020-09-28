@@ -82,7 +82,7 @@ export default new Vuex.Store({
         if (await ns.confirmAction("Do you want to close this bug?", "It'll be squashed forever ...")) {
           await api.delete('bugs/' + bugId)
         } commit("closeBug", bugId)
-        // commit("setActiveBug", bugId)
+        commit("setActiveBug", bugId)
       } catch (error) {
 
       }
@@ -97,10 +97,14 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
-    async getNotes({ commit }, bugId) {
+    async getNotes({ commit }, bug) {
       try {
+        console.log(bug);
+        debugger
+        let res = await api.get(bug + '/notes')
+        console.log(res);
         // let res = await api.get('bugs/' + bugId + '/notes')
-        let res = await api.get('notes/')
+        // let res = await api.get('notes/')
         commit('setNotes', res.data)
       } catch (error) {
         console.error(error);
@@ -110,7 +114,6 @@ export default new Vuex.Store({
       try {
         let res = await api.post('notes', noteData)
         commit("createNote", [...state.notes, res.data])
-        console.log(res.data);
       } catch (error) {
         console.error(error);
       }

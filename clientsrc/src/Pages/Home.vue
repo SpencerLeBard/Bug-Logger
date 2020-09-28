@@ -33,13 +33,13 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-10 card list-boards" v-for="bug in bugs" :key="bug.id">
+        <div class="col-11 list-boards m-1" v-for="bug in bugs" :key="bug.id">
           <div class="list-group-item">
             <router-link
               class="list-group d-flex text-center"
               :to="{ name: 'BugDetails', params: { bugId: bug.id } }"
             >
-              Bug: {{ bug.title }}
+              Bug Title: {{ bug.title }}
             </router-link>
             <div class="text-center">
               ||| Created By: {{ bug.creatorEmail }} ||| Created:
@@ -93,7 +93,6 @@ export default {
 .list-boards:hover {
   transform: scale(1.07);
   transition: 0.15s ease;
-  /* background-color: black; */
 }
 .list-boards {
   width: 25vw;

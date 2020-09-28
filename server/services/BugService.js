@@ -23,12 +23,11 @@ class BugService {
 
     return bugData;
   }
-  async getNotesByBugId(req, res, next) {
+  async getNotesByBugId(bug) {
     try {
-      let data = await bugService.getNotesByBugId(req.params.id, req.userInfo.email)
-      return res.send(data)
+      let data = await dbContext.Notes.find({ bug })
+      return data
     } catch (error) {
-      next(error)
     }
   }
 
