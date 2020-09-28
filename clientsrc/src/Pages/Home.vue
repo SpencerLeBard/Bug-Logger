@@ -43,8 +43,13 @@
             </router-link>
             <div class="text-center">
               ||| Created By: {{ bug.creatorEmail }} ||| Created:
-              {{ bug.createdAt | formatDate }} ||| Bug Squashed:
-              {{ bug.closed }}
+              {{ bug.createdAt | formatDate }} ||| Bug Squashed: {{ bug.closed
+              <i
+                v-if="bug.closed == true"
+                class="fa fa-check"
+                aria-hidden="true"
+              ></i
+              >}}
             </div>
           </div>
         </div>
