@@ -87,21 +87,10 @@ Delete
 
 <hr>
 
-## Requirements
-
-### Saturday/Sunday
+## Requirements - Monday
 
 1 BugDetails displays the details of a bug and its Notes 
 
-### Monday
-
-- Bugs can be closed from the BugDetails view
-
-### Easy Monday
-* User is prompted "are you sure?" when closing a Bug ///// NOTE SweetAlerts setup and ready
-* Cannot edit a Bug after it is closed //NOTE if statment made and ready
-
-###
 X Bugs can be filtered by their status ||| 
 X Styling Indication on main page that bug is closed (color, strike-through, etc.)
 

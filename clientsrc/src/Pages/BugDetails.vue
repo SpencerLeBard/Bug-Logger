@@ -8,6 +8,7 @@
         <h1 v-if="bug.title && !editToggle">Bug Name: {{ bug.title }}</h1>
         <div class="btn-group dropright">
           <i
+            v-if="bug.closed == false"
             class="fa fa-ellipsis-v btn big-button"
             aria-hidden="true"
             role="button"
@@ -134,7 +135,6 @@ export default {
     },
     editBug() {
       this.bugData.id = this.$route.params.bugId;
-      console.log(this.bugData);
       this.$store.dispatch("editBug", this.bugData);
     },
     closeBug() {
@@ -151,6 +151,5 @@ export default {
 .note-cards:hover {
   transform: scale(1.15);
   transition: 0.25s ease;
-  background-color: rgba(240, 240, 240, 0.925);
 }
 </style>

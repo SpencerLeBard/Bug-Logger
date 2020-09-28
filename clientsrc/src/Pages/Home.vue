@@ -88,7 +88,7 @@ export default {
 .list-boards:hover {
   transform: scale(1.07);
   transition: 0.15s ease;
-  background-color: black;
+  /* background-color: black; */
 }
 .list-boards {
   width: 25vw;

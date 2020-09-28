@@ -13,7 +13,6 @@ export default new Vuex.Store({
     profile: {},
     bugs: [],
     activeBug: {},
-    //open closed bugs?
     notes: []
   },
   mutations: {
@@ -70,7 +69,6 @@ export default new Vuex.Store({
         let res = await api.post('bugs', bugData)
         commit("createBug", res.data)
         router.push({ path: "bugs/" + res.data.id })
-        // router.push({ name: 'BugDetails', params: { id: res.data.id } })
         this.dispatch("getActiveBug", res.data.id);
         this.dispatch("getNotes", bugData);
 
@@ -84,8 +82,7 @@ export default new Vuex.Store({
         if (await ns.confirmAction("Do you want to close this bug?", "It'll be squashed forever ...")) {
           await api.delete('bugs/' + bugId)
         } commit("closeBug", bugId)
-        commit("setActiveBug", bugId)
-        router.push({ name: "Home" })
+        // commit("setActiveBug", bugId)
       } catch (error) {
 
       }
@@ -120,7 +117,7 @@ export default new Vuex.Store({
     },
     async deleteNote({ commit }, noteId) {
       try {
-        if (await ns.confirmAction("Do you want to delete this list?", "You'll never get it back ...")) {
+        if (await ns.confirmAction("Do you want to delete this Note?", "You'll never get it back ...")) {
           await api.delete('notes/' + noteId)
           commit("removeNote", noteId)
         }
@@ -130,7 +127,6 @@ export default new Vuex.Store({
     },
     async editBug({ commit }, bugData) {
       try {
-        // NOTE if(cannot edit if closed)
         let res = await api.put('bugs/' + bugData.id, bugData)
         commit('setActiveBug', res.data)
       } catch (error) {
