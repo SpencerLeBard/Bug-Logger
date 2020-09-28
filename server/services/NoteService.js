@@ -14,10 +14,15 @@ class NoteService {
     }
     return data
   }
-  async getNotesByBugId(bugId, email) {
-    let data = await dbContext.Notes.find({ bugId: bugId, creatorEmail: email })
-    return data
+  async getNotesByBugId(bug) {
+    try {
+      let data = await dbContext.Notes.find({ bug })
+      return data
+    } catch (error) {
+    }
   }
+
+
 
   async create(rawData) {
     let data = await dbContext.Notes.create(rawData)

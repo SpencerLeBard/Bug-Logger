@@ -23,13 +23,13 @@ class BugService {
 
     return bugData;
   }
-  async getNotesByBugId(bug) {
-    try {
-      let data = await dbContext.Notes.find({ bug })
-      return data
-    } catch (error) {
-    }
-  }
+  // async getNotesByBugId(bug) {
+  //   try {
+  //     let data = await dbContext.Notes.find({ bug })
+  //     return data
+  //   } catch (error) {
+  //   }
+  // }
 
   async create(rawData) {
     let data = await dbContext.Bugs.create(rawData)
