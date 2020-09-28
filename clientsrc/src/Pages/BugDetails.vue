@@ -1,19 +1,19 @@
 <template>
-  <div class="container-fluid">
-    <div class="row bg-success border-top border-dark">
-      <div class="col-3">
+  <div class="container-fluid bg-secondary con-full">
+    <div class="row bg-secondary align-items-center">
+      <div class="col-2 bg-dark text-light offset-2">
         <h3>Last Updated On: {{ bug.updatedAt | formatDate }}</h3>
       </div>
-      <div class="col">
+      <div class="col-4 ml-5 card bg-dark text-light">
         <h1 v-if="bug.title && !editToggle">Bug Name: {{ bug.title }}</h1>
+        <i
+          v-if="bug.closed == false"
+          class="fa fa-cog btn big-button bg-dark text-light"
+          aria-hidden="true"
+          role="button"
+          data-toggle="dropdown"
+        ></i>
         <div class="btn-group dropright">
-          <i
-            v-if="bug.closed == false"
-            class="fa fa-ellipsis-v btn big-button"
-            aria-hidden="true"
-            role="button"
-            data-toggle="dropdown"
-          ></i>
           <div class="dropdown-menu ml-1 text-center">
             <p class="btn" @click="editToggle = !editToggle">Edit Bug</p>
             <p class="btn" @click="closeBug">Close Bug</p>
@@ -60,10 +60,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col mt-3">
         <form class="form-inline" @submit.prevent="addNote">
           <div class="form-group">
-            <button class="btn btn-primary m-1" @submit.prevent="addNote">
+            <button class="btn btn-primary" @submit.prevent="addNote">
               Add Note
             </button>
             <input
@@ -78,10 +78,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="col card notes-card d-flex m-1 p-5 bg-light">
-        <div><h1 class="card col-3 text-center">Notes:</h1></div>
+      <div class="col notes-card m-1 p-3">
+        <div><h1 class="card col-12 text-center">Notes:</h1></div>
         <notes-component
-          class="card col-3 m-2 note-cards"
+          class="card col-12 m-2 note-cards p-3 text-center"
           v-for="note in notes"
           :key="note.id"
           :noteProp="note"
@@ -145,11 +145,17 @@ export default {
 
 <style>
 .notes-card {
-  height: 70vh;
+  height: 25vh;
 }
 .note-cards:hover {
-  transform: scale(1.1);
+  transform: scale(1.025);
   transition: 0.2s ease;
-  background-color: rgb(233, 231, 231);
+  background-color: rgba(243, 239, 239, 0.863);
+}
+.note-cards {
+  width: 96vw;
+}
+.con-full {
+  height: 98vh;
 }
 </style>

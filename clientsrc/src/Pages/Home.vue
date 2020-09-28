@@ -1,9 +1,12 @@
 <template>
   <div class="home">
-    <div class="container-fluid bg-dark">
+    <div class="container-fluid bg-secondary">
       <div class="row">
-        <div class="col text-center bg-dark text-light">
-          <form @submit.prevent="addBug">
+        <div class="col text-center bg-secondary text-light text-center">
+          <form
+            @submit.prevent="addBug"
+            class="justify-content-center text-center"
+          >
             Report Bugs Here!
             <input
               class="form-control create-bug-title"
@@ -21,7 +24,7 @@
             <div class="modal-footer justify-content-center">
               <button
                 type="submit"
-                class="btn btn-danger"
+                class="btn btn-danger mr-5 col-12"
                 @submit.prevent="addBug"
               >
                 Create Bug
@@ -30,9 +33,9 @@
           </form>
         </div>
       </div>
-      <div class="row">
+      <div class="row ml-5">
         <div
-          class="col-11 m-1 list-boards d-flex justify-content-center"
+          class="col-11 ml-2 m-1 list-boards d-flex justify-content-center"
           v-for="bug in bugs"
           :key="bug.id"
         >

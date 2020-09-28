@@ -87,11 +87,6 @@ Delete
 
 <hr>
 
-## Requirements - Monday
-
-1 BugDetails displays the details of a bug and its Notes 
-
-X Bugs can be filtered by their status ||| 
 
 
 
