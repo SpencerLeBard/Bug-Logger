@@ -99,9 +99,9 @@ export default new Vuex.Store({
     },
     async getNotes({ commit }, bug) {
       try {
-        console.log(bug);
+        // console.log(bug);
         let res = await api.get('bugs/' + bug + '/notes')
-        console.log(res);
+        // console.log(res);
         // let res = await api.get('notes/')
         commit('setNotes', res.data)
       } catch (error) {

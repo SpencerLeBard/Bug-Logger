@@ -1,10 +1,8 @@
 <template>
   <div class="home">
-    <div class="container-fluid">
+    <div class="container-fluid bg-dark">
       <div class="row">
-        <div
-          class="col-12 card d-flex justify-content-center text-center bg-dark text-light"
-        >
+        <div class="col text-center bg-dark text-light">
           <form @submit.prevent="addBug">
             Report Bugs Here!
             <input
@@ -33,7 +31,11 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-11 list-boards m-1" v-for="bug in bugs" :key="bug.id">
+        <div
+          class="col-11 m-1 list-boards d-flex justify-content-center"
+          v-for="bug in bugs"
+          :key="bug.id"
+        >
           <div class="list-group-item">
             <router-link
               class="list-group d-flex text-center"
@@ -44,12 +46,14 @@
             <div class="text-center">
               ||| Created By: {{ bug.creatorEmail }} ||| Created:
               {{ bug.createdAt | formatDate }} ||| Bug Squashed:
-              {{ bug.closed }} <p <i
-                v-if="bug.closed == true"
-                class="fa fa-check"
-                aria-hidden="true"
-              ></i
-              ></p>
+              {{ bug.closed }}
+              <p>
+                <i
+                  v-if="bug.closed == true"
+                  class="fa fa-check"
+                  aria-hidden="true"
+                ></i>
+              </p>
             </div>
           </div>
         </div>
@@ -93,8 +97,5 @@ export default {
 .list-boards:hover {
   transform: scale(1.07);
   transition: 0.15s ease;
-}
-.list-boards {
-  width: 25vw;
 }
 </style>

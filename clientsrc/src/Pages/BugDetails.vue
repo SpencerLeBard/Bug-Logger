@@ -150,5 +150,6 @@ export default {
 .note-cards:hover {
   transform: scale(1.1);
   transition: 0.2s ease;
+  background-color: rgb(233, 231, 231);
 }
 </style>

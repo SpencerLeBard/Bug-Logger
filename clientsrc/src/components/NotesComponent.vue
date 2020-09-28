@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h5>{{ noteProp.content }}</h5>
+      <h5 class="list-boards justify-content-center">{{ noteProp.content }}</h5>
       <button class="btn btn-sm btn-danger" @click="deleteNote">
         delete note
       </button>
@@ -20,6 +20,12 @@ export default {
   },
 };
 </script>
-
-<style>
+<style scoped>
+/* .list-boards:hover {
+  transform: scale(1.07);
+  transition: 0.15s ease;
+}
+.list-boards {
+  width: 25vw;
+} */
 </style>
