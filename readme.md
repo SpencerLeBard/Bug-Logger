@@ -92,7 +92,6 @@ Delete
 1 BugDetails displays the details of a bug and its Notes 
 
 X Bugs can be filtered by their status ||| 
-X Styling Indication on main page that bug is closed (color, strike-through, etc.)
 
 
 
