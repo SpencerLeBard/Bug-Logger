@@ -130,7 +130,6 @@ export default {
   methods: {
     addNote() {
       this.$store.dispatch("addNote", this.newNote);
-      console.log(this.newNote);
     },
     editBug() {
       this.bugData.id = this.$route.params.bugId;
