@@ -21,11 +21,4 @@ export default {
 };
 </script>
 <style scoped>
-/* .list-boards:hover {
-  transform: scale(1.07);
-  transition: 0.15s ease;
-}
-.list-boards {
-  width: 25vw;
-} */
 </style>

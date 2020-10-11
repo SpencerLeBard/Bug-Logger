@@ -104,6 +104,7 @@ export default {
       bugData: {
         title: "",
         description: "",
+        //maybe something else
       },
       Data: {
         title: "",
